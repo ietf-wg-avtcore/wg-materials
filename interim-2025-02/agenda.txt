@@ -1,0 +1,34 @@
+Audio/Video Transport Core Maintenance (avtcore) Working Group
+===============================================================
+
+CHAIR:  Jonathan Lennox
+
+Virtual Interim Agenda
+Tuesday, February 11, 2025
+8 AM - 10 AM Pacific Time
+
+Meeting link:
+https://datatracker.ietf.org/meeting/interim-2025-avtcore-01/session/avtcore
+
+Notes:
+https://notes.ietf.org/notes-ietf-interim-2025-avtcore-01-avtcore
+
+Slides:
+https://docs.google.com/presentation/d/1SmbA9tmeejbvRYaEzalNXFQbyzrs-n0TSb5BGMmWaqM
+
+1. Preliminaries (Chairs, 10 min)
+   Note Well, Note Takers, Agenda Bashing, Draft status
+
+2. RTP over QUIC (Mathis Engelbart, 10 min)
+   draft-ietf-avtcore-rtp-over-quic
+
+3. SDP Offer/Answer for RTP over QUIC (Spencer Dawkins, 30 min)
+   draft-dawkins-avtcore-sdp-roq
+
+4. Absolute Capture Time RTP Header Extension (Harald Alvestrand, 15 min)
+   draft-ietf-avtcore-abs-capture-time
+
+5. RTCP Messages for Temporal-Spatial Resolution (Yong He, 15 min)
+   draft-ietf-avtcore-rtcp-green-metadata
+
+6. Wrapup and Next Steps (Chairs, 10 min)
