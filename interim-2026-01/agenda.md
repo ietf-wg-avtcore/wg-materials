@@ -19,4 +19,7 @@ January 22, 2026
 2. RTP Control Protocol (RTCP) Messages for Temporal-Spatial Resolution (Yong He, 15 min)
    https://datatracker.ietf.org/doc/draft-ietf-avtcore-rtcp-green-metadata/
 
-3. Wrapup and Next Steps (Chairs, 10 min)
+3. SDP Offer/Answer for RTP over QUIC (Spencer Dawkins, 15 min)
+   https://datatracker.ietf.org/doc/draft-dawkins-avtcore-sdp-roq/
+
+4. Wrapup and Next Steps (Chairs, 10 min)
