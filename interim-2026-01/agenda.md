@@ -20,6 +20,6 @@ January 22, 2026
    https://datatracker.ietf.org/doc/draft-ietf-avtcore-rtcp-green-metadata/
 
 3. SDP Offer/Answer for RTP over QUIC (Spencer Dawkins, 15 min)
-   https://datatracker.ietf.org/doc/draft-dawkins-avtcore-sdp-roq/
+   https://datatracker.ietf.org/doc/draft-ietf-avtcore-sdp-roq/
 
 4. Wrapup and Next Steps (Chairs, 10 min)
