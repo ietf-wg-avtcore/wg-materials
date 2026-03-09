@@ -18,4 +18,10 @@ Time: 14:00 - 16:00	local time
 3. H.265 Profile for WebRTC (Philipp Hancke, 10 min): https://datatracker.ietf.org/doc/draft-ietf-avtcore-hevc-webrtc/
 4. RTP Payload Format for Avatar Representation Format (ARF) Animations (Hyunsik Yang, 15 min): https://datatracker.ietf.org/doc/draft-hsyang-avtcore-rtp-avatar/
 5. RTP Frame Acknowledgement (Gurtej Singh Chandok, 15 min): https://github.com/sprangerik/frame-acknowledgement
-6. Wrapup and Next Steps (Chairs, 5 min)
+6. RTP Payload Format for SFrame (Youenn Fablet, 15 min): https://datatracker.ietf.org/doc/draft-ietf-avtcore-rtp-sframe/
+
+As time permits:
+7. STUN Protocol for Embedding DTLS (SPED) (Philipp Hancke): https://datatracker.ietf.org/doc/draft-hancke-webrtc-sped/
+8. SCTP Negotiation Acceleration Protocol (Philipp Hancke): https://datatracker.ietf.org/doc/draft-hancke-tsvwg-snap/
+
+9. Wrapup and Next Steps (Chairs, 5 min)
