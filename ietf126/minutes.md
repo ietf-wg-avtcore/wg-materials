@@ -15,17 +15,17 @@ The AVTCORE working group met at IETF 126. The session covered status updates on
 * **Slides**: [AVTCore 126 Chair Slides](https://datatracker.ietf.org/meeting/126/materials/slides-126-avtcore-avtcore-126-chair-slides-00)
 * **Discussion**:
   * RFC 9993 (Haptics) has been published.
-  * The V-3C draft is currently with the RFC Editor.
+  * The V3C draft is currently with the RFC Editor.
   * JPEG XS (3rd edition) and green metadata are under IESG review.
   * [draft-ietf-avtcore-hevc-webrtc](https://datatracker.ietf.org/doc/draft-ietf-avtcore-hevc-webrtc/) completed Working Group Last Call (WGLC) with only minor editorial comments.
   * The RTP over QUIC draft completed WGLC but received insufficient feedback. Chairs urged the working group (specifically targeting Magnus Westerlund) to review and comment.
   * Several adopted drafts have expired. Senders and authors are requested to update them.
-  * For the V-3C document, Bernard Aboba will remain listed as a co-author during Auth48 to reflect his contributions. This was agreed to by the AD (Alan Ford).
+  * For the HEVC document, Bernard Aboba will remain listed as a co-author during Auth48 to reflect his contributions. This was agreed to by the AD (Gorry Fairhurst).
 
 ---
 
 ### 2. Frame Acknowledgement
-* **Presenter**: Erik Myhre
+* **Presenter**: Erik Språng
 * **Slides**: [Frame Acknowledgement](https://datatracker.ietf.org/meeting/126/materials/slides-126-avtcore-frame-acknowledgement-00)
 * **Related Draft**: [draft-ietf-avtcore-frame-acknowledgement](https://datatracker.ietf.org/doc/draft-ietf-avtcore-frame-acknowledgement/)
 * **Discussion**:
@@ -33,9 +33,9 @@ The AVTCORE working group met at IETF 126. The session covered status updates on
   * To prevent excessive state tracking on the receiver side when feedback is not regularly requested, a negotiable status window (default size 255) has been introduced.
   * Senders are explicitly directed to request feedback regularly and adhere to RTCP feedback timing rules to prevent feedback amplification.
   * A design question was raised on whether to include a flag signaling that a frame was received completely but could not be decoded (e.g., due to missing dependencies). 
-    * Jonathan Lennox suggested keeping the mechanism focused purely on decodability (if received and decoded, acknowledge; if not, do not acknowledge) and relying on separate transport-layer mechanisms (like NACKs) for packet receipt. Erik Myhre agreed.
+    * Jonathan Lennox suggested keeping the mechanism focused purely on decodability (if received and decoded, acknowledge; if not, do not acknowledge) and relying on separate transport-layer mechanisms (like NACKs) for packet receipt. Erik Språng agreed.
   * Clarifying the definition of a "frame" in the context of tile/slice streaming (e.g., H.266, AV1):
-    * Moe Zanaty noted that "frame" usually means a full temporal unit, and using it for slices or tiles might introduce confusion. 
+    * Mo Zanaty noted that "frame" usually means a full temporal unit, and using it for slices or tiles might introduce confusion. 
     * Magnus Westerlund noted that in VR/XR use cases, identifying independent decodable units (like tiles) is highly valuable when some parts of the picture are deliberately discarded.
     * Jonathan Lennox suggested leaving this under encoder control, potentially defining start/end flags so encoders can specify the exact unit of granularity they care about.
 
@@ -50,7 +50,7 @@ The AVTCORE working group met at IETF 126. The session covered status updates on
   * Component parameters were updated to match the final MPEG FDIS specification.
   * The fragmentation unit part, SDP parameters section, and security concerns section were revised based on feedback.
   * The presenter requested WGLC. 
-  * Jonathan Lennox suggested holding the WGLC briefly until the closely related V-3C document finishes RFC Editor processing to ensure any late-stage feedback is incorporated.
+  * Jonathan Lennox suggested holding the WGLC briefly until the closely-related V3C document finishes RFC Editor processing to ensure any late-stage editoral changes are incorporated.
 
 ---
 
@@ -58,13 +58,14 @@ The AVTCORE working group met at IETF 126. The session covered status updates on
 * **Presenter**: Shuaiyang Sun
 * **Slides**: [RTP/SDP for Opus Multistream](https://datatracker.ietf.org/meeting/126/materials/slides-126-avtcore-rtpsdp-for-opus-multistream-00)
 * **Discussion**:
-  * Use case: Cloud gaming clients need multi-channel surround sound. Currently, web browsers reject multi-channel Opus offerings, forcing developers to use a spec-violating workaround called "SDP merging." W3C is moving to deprecate SDP merging.
+  * Use case: Cloud gaming clients need multi-channel surround sound. Currently, web browsers reject multi-channel Opus offerings, forcing developers to use a spec-violating workaround called "SDP munging." W3C is moving to deprecate SDP munging.
   * During the adoption call, Philipp Hancke objected to introducing a new `multiopus` MIME type and suggested extending the existing standard `opus` namespace to support channel counts (e.g., `opus/48000/6`).
   * In the session chat, Philipp Hancke noted: *"if mid=0 would offer opus and multiopus it would be accepted."*
-  * Moe Zanaty agreed with Philipp's suggestion, noting that other standards and contexts (like iAMF/YouTube) use the standard `opus` type with channel mapping parameters without requiring a new MIME type.
+  * Mo Zanaty agreed with Philipp's suggestion, noting that other standards and contexts (like iAMF/YouTube) use the standard `opus` type with channel mapping parameters without requiring a new MIME type.
   * Harald Alvestrand explained the history of the `multiopus` implementation (introduced in Chromium as an isolated path to prevent breaking standard stereo Opus implementations) and supported transitioning to a clean standard extension.
   * Alan Ford and Jonathan Lennox discussed backwards compatibility. If a server offers `opus/48000/6` alongside `opus/48000/2` as separate payload types, a legacy client should gracefully ignore the multichannel format and negotiate standard stereo.
-  * **Consensus**: The group agreed to extend the standard `opus` payload format to support multi-channel signaling rather than adopting a new `multiopus` media type. 
+  * **Consensus**: The group agreed to extend the standard `opus` payload format to support multi-channel signaling rather than adopting a new `multiopus` media type.  Authors will submit a new version
+  of the draft with that change, and then the chairs will do a call for adoption.
 
 ---
 
@@ -75,9 +76,9 @@ The AVTCORE working group met at IETF 126. The session covered status updates on
   * GCM-SST (Galois Counter Mode with Strong Secure Tags) is an AEAD algorithm designed to address standard GCM's key-compromise vulnerability on tag forgery. By deriving unique authentication keys for each packet/nonce, GCM-SST enables secure tag truncation.
   * The authors are working on adopting GCM-SST within CFRG first, then bringing the SRTP cipher suites to AVTCORE.
   * A 48-bit tag length was proposed as a balance of security and overhead for RTP.
-  * Moe Zanaty and Alan Ford suggested adding a 32-bit tag option. Audio developers currently using truncated HMAC-SHA1 32-bit tags are highly sensitive to overhead and would transition more easily to GCM-SST if a 32-bit option was explicitly standardized.
-  * John Preuß Mattsson clarified that 32-bit GCM-SST is mathematically as strong as 32-bit truncated HMAC-SHA1, but runs twice as fast as Counter Mode + HMAC on hardware supporting AES instructions. It requires two additional ECB operations per packet for key derivation, which has negligible overhead except for extremely small packets.
-  * John Preuß Mattsson also explained that 128-bit tags only yield about 117 bits of security in GCM-SST due to mathematical bounds, making truncated options (such as 48-bit or 96-bit) highly practical.
+  * Mo Zanaty and Gurtej Singh Chandok suggested adding a 32-bit tag option. Audio developers currently using truncated HMAC-SHA1 32-bit tags are highly sensitive to overhead and would transition more easily to GCM-SST if a 32-bit option was explicitly standardized.
+  * John Preuß Mattsson clarified that 32-bit GCM-SST is mathematically as strong as 32-bit truncated HMAC-SHA1, but runs twice as fast as Counter Mode + HMAC on hardware supporting AES instructions. It requires two additional ECB operations per packet for key derivation compared to standard GCM, which has negligible overhead except for extremely small packets.
+  * John Preuß Mattsson also explained that 128-bit tags only yield about 117 bits of security in GCM-SST due to mathematical bounds, making truncated options (such as 112-byte) practical to avoid a false sense of security.  He is considering adding support for 128-bit tags with Rijndael 256-bit keys and blocks in the next version.
 
 ---
 
@@ -96,6 +97,6 @@ The AVTCORE working group met at IETF 126. The session covered status updates on
 ---
 
 ## Next Steps
-
-* **[draft-ietf-avtcore-rtp-vdmc](https://datatracker.ietf.org/doc/draft-ietf-avtcore-rtp-vdmc/)**: Chairs to initiate WGLC after the V-3C draft completes RFC Editor processing.
+* **[draft-ietf-avtcore-hevc-webrtc](https://datatracker.ietf.org/doc/draft-ietf-avtcore-hevc-webrtc/)**: Chairs to request publication once WGLC editoral changes are merged.
+* **[draft-ietf-avtcore-rtp-vdmc](https://datatracker.ietf.org/doc/draft-ietf-avtcore-rtp-vdmc/)**: Chairs to initiate WGLC after the V3C draft completes RFC Editor processing.
 * **[draft-ietf-avtcore-frame-acknowledgement](https://datatracker.ietf.org/doc/draft-ietf-avtcore-frame-acknowledgement/)**: Authors to resolve remaining open issues on GitHub and coordinate list discussion on the definition of a "frame" for tile/slice streaming.
