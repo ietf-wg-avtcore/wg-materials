@@ -42,7 +42,7 @@ The AVTCORE working group met at IETF 126. The session covered status updates on
 ---
 
 ### 3. RTP Payload Format for V-DMC
-* **Presenter**: Presenter from IntoZero
+* **Presenter**: Hyunsik Yang
 * **Slides**: [V-DMC slides](https://datatracker.ietf.org/meeting/126/materials/slides-126-avtcore-v-dmc-slides-00)
 * **Related Draft**: [draft-ietf-avtcore-rtp-vdmc](https://datatracker.ietf.org/doc/draft-ietf-avtcore-rtp-vdmc/)
 * **Discussion**:
@@ -55,7 +55,7 @@ The AVTCORE working group met at IETF 126. The session covered status updates on
 ---
 
 ### 4. RTP/SDP for Opus Multistream
-* **Presenter**: Shuaiyang Sun
+* **Presenter**: Sun Shin
 * **Slides**: [RTP/SDP for Opus Multistream](https://datatracker.ietf.org/meeting/126/materials/slides-126-avtcore-rtpsdp-for-opus-multistream-00)
 * **Discussion**:
   * Use case: Cloud gaming clients need multi-channel surround sound. Currently, web browsers reject multi-channel Opus offerings, forcing developers to use a spec-violating workaround called "SDP munging." W3C is moving to deprecate SDP munging.
