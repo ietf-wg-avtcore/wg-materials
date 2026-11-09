@@ -34,4 +34,9 @@ Time: 16:30 - 18:30 San Francisco time (PST, 00:30 - 02:30 UTC)
 6. RTP/SDP for Opus Multistream (Sun Shin, 15 min)
    https://datatracker.ietf.org/doc/draft-shin-avtcore-rtp-multi-opus/
 
-7. Wrapup and Next Steps (Chairs, 10 min)
+7. RTP Frame Acknowledgement (Erik Språng, 10 min)
+   https://datatracker.ietf.org/doc/draft-ietf-avtcore-frame-acknowledgement/
+
+8. PSA: RTP Profile for AV2 (Erik Språng, 10 min)
+
+9. Wrapup and Next Steps (Chairs, 10 min)
